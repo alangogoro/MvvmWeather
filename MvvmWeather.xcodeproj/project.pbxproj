@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		CE3A65D926E5D52200131604 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3A65D826E5D52200131604 /* AppDelegate.swift */; };
 		CE3A65DB26E5D52200131604 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3A65DA26E5D52200131604 /* SceneDelegate.swift */; };
-		CE3A65DD26E5D52200131604 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3A65DC26E5D52200131604 /* ViewController.swift */; };
 		CE3A65E026E5D52200131604 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE3A65DE26E5D52200131604 /* Main.storyboard */; };
 		CE3A65E226E5D52400131604 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE3A65E126E5D52400131604 /* Assets.xcassets */; };
 		CE3A65E526E5D52400131604 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE3A65E326E5D52400131604 /* LaunchScreen.storyboard */; };
+		CE3A65EE26E5EC9000131604 /* WeatherListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3A65ED26E5EC9000131604 /* WeatherListTableViewController.swift */; };
+		CE3A65F026E5ECE700131604 /* AddCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3A65EF26E5ECE700131604 /* AddCityViewController.swift */; };
+		CE3A65F426E5F2CF00131604 /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3A65F326E5F2CF00131604 /* WeatherCell.swift */; };
+		CE3A65F726E6055A00131604 /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3A65F626E6055A00131604 /* Webservice.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CE3A65D526E5D52200131604 /* MvvmWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MvvmWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE3A65D826E5D52200131604 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE3A65DA26E5D52200131604 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CE3A65DC26E5D52200131604 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CE3A65DF26E5D52200131604 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE3A65E126E5D52400131604 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE3A65E426E5D52400131604 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE3A65E626E5D52400131604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE3A65ED26E5EC9000131604 /* WeatherListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListTableViewController.swift; sourceTree = "<group>"; };
+		CE3A65EF26E5ECE700131604 /* AddCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityViewController.swift; sourceTree = "<group>"; };
+		CE3A65F326E5F2CF00131604 /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
+		CE3A65F626E6055A00131604 /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,50 @@
 		CE3A65D726E5D52200131604 /* MvvmWeather */ = {
 			isa = PBXGroup;
 			children = (
+				CE3A65F526E6055000131604 /* Services */,
+				CE3A65F126E5F2AF00131604 /* Views */,
+				CE3A65EC26E5EC6B00131604 /* Controllers */,
 				CE3A65D826E5D52200131604 /* AppDelegate.swift */,
 				CE3A65DA26E5D52200131604 /* SceneDelegate.swift */,
-				CE3A65DC26E5D52200131604 /* ViewController.swift */,
 				CE3A65DE26E5D52200131604 /* Main.storyboard */,
 				CE3A65E126E5D52400131604 /* Assets.xcassets */,
 				CE3A65E326E5D52400131604 /* LaunchScreen.storyboard */,
 				CE3A65E626E5D52400131604 /* Info.plist */,
 			);
 			path = MvvmWeather;
+			sourceTree = "<group>";
+		};
+		CE3A65EC26E5EC6B00131604 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE3A65ED26E5EC9000131604 /* WeatherListTableViewController.swift */,
+				CE3A65EF26E5ECE700131604 /* AddCityViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CE3A65F126E5F2AF00131604 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE3A65F226E5F2BB00131604 /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE3A65F226E5F2BB00131604 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CE3A65F326E5F2CF00131604 /* WeatherCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		CE3A65F526E6055000131604 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CE3A65F626E6055A00131604 /* Webservice.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,9 +178,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE3A65DD26E5D52200131604 /* ViewController.swift in Sources */,
+				CE3A65EE26E5EC9000131604 /* WeatherListTableViewController.swift in Sources */,
 				CE3A65D926E5D52200131604 /* AppDelegate.swift in Sources */,
+				CE3A65F726E6055A00131604 /* Webservice.swift in Sources */,
+				CE3A65F426E5F2CF00131604 /* WeatherCell.swift in Sources */,
 				CE3A65DB26E5D52200131604 /* SceneDelegate.swift in Sources */,
+				CE3A65F026E5ECE700131604 /* AddCityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

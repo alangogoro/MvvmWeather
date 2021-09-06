@@ -14,6 +14,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        UINavigationBar.appearance().tintColor = UIColor(red: 52/255, green: 152/255, blue: 219/255, alpha: 1.0)
+        UINavigationBar.appearance().backgroundColor = UIColor(red: 52/255, green: 152/255, blue: 219/255, alpha: 1.0)
+        // ⭐️ 設定 NavigationBar 標題文字的顏色
+        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        // ⭐️ 設定 NavigationBar BarButtomItem 的顏色
+        UIBarButtonItem.appearance().tintColor = UIColor.white
+        
         return true
     }
 
@@ -33,4 +42,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-
