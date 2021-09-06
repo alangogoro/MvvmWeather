@@ -17,8 +17,8 @@ final class Webservice {
         URLSession.shared.dataTask(with: resource.url) { data, response, error in
             if let data = data {
                 debugPrint(data)
-                /* ⭐️ 回呼（Callback）執行於背景執行緒，若想更新 UI 必須指定
-                 * completion 執行在主執行緒上 */
+                /* ⭐️ 回呼（Callback）執行於背景執行緒，若想更新 UI 必須
+                 * 指定 completion 執行在主執行緒上 */
                 DispatchQueue.main.async {
                     completion(resource.parse(data))
                 }
