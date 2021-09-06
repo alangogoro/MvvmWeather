@@ -59,7 +59,7 @@
                         <barButtonItem key="leftBarButtonItem" image="gearshape" catalog="system" id="3tJ-qP-NhM"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="VcJ-G1-5hv">
                             <connections>
-                                <segue destination="9MF-pw-vs9" kind="presentation" id="G56-5W-lcb"/>
+                                <segue destination="9MF-pw-vs9" kind="presentation" identifier="AddWeatherSegue" id="G56-5W-lcb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
