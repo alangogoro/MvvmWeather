@@ -11,7 +11,6 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -49,6 +48,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userDefautlts.setValue(TemperatureUnit.fahrenheit.rawValue, forKey: "unit")
         }
     }
-
-
+    
+    
 }
