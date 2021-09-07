@@ -10,21 +10,20 @@ import Foundation
 
 class WeatherViewModel {
     let weather: WeatherData
+    var temperature: Double
     
     init(_ weatherData: WeatherData) {
         self.weather = weatherData
+        self.temperature = weatherData.main.temp
     }
     
     var city: String {
         return weather.name
     }
-    
-    var temperature: Double {
-        return weather.main.temp
-    }
 }
 
 class WeatherListViewModel {
+    
     private var weatherViewModels = [WeatherViewModel]()
     
     func addWeatherViewModel(_ viewModel: WeatherViewModel) {
@@ -38,4 +37,29 @@ class WeatherListViewModel {
     func modelAt(_ index: Int) -> WeatherViewModel {
         return weatherViewModels[index]
     }
+    
+    func updateUnit(to unit: TemperatureUnit) {
+        switch unit {
+        case .celsius:
+            toCelsius()
+        case .fahrenheit:
+            toFahrenheit()
+        }
+    }
+    
+    private func toCelsius() {
+        weatherViewModels = weatherViewModels.map { vm in
+            let weatherModel = vm
+            weatherModel.temperature = (weatherModel.temperature - 32) * 5/9
+            return weatherModel
+        }
+    }
+    private func toFahrenheit() {
+        weatherViewModels = weatherViewModels.map { vm in
+            let weatherModel = vm
+            weatherModel.temperature = (weatherModel.temperature * 9/5) + 32
+            return weatherModel
+        }
+    }
+    
 }

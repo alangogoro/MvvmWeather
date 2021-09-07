@@ -9,16 +9,24 @@ import Foundation
 import UIKit
 
 class WeahterListTableViewController: UITableViewController,
-                                      AddCityViewControllerDelegate {
+                                      AddCityViewControllerDelegate,
+                                      SettingsTableViewControllerDelegate {
     
     // MARK: - Properties
     private var weatherListViewModel = WeatherListViewModel()
+    private var lastUnitSelection: TemperatureUnit!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        if let value = UserDefaults.standard.value(forKey: "unit") as? String {
+            lastUnitSelection = TemperatureUnit(rawValue: value)
+        }
+        
+        setupDefaultsSettings()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -29,20 +37,45 @@ class WeahterListTableViewController: UITableViewController,
             }
             
             guard let addCityController = nav.viewControllers.first as? AddCityViewController else {
-                debugPrint("Failed to parse Segue destination to AddCityViewController")
+                debugPrint("AddCityViewController not found")
+                return
+            }
+            addCityController.delegate = self
+        }
+        else if segue.identifier == "SettingsTableViewController" {
+            guard let nav = segue.destination as? UINavigationController else {
+                debugPrint("Failed to parse Segue destination to NavigationController")
                 return
             }
             
-            addCityController.delegate = self
+            guard let settingsController = nav.viewControllers.first as? SettingsTableViewController else {
+                debugPrint("SettingsTableViewController not found")
+                return
+            }
+            settingsController.delegate = self
         }
     }
     
     // MARK: - Helpers
+    private func setupDefaultsSettings() {
+        let userDefautlts = UserDefaults.standard
+        if userDefautlts.value(forKey: "unit") == nil {
+            userDefautlts.setValue(TemperatureUnit.fahrenheit.rawValue, forKey: "unit")
+        }
+    }
     
     // MARK: - AddCityViewControllerDelegate
     func didSave(weatherViewModel: WeatherViewModel) {
         weatherListViewModel.addWeatherViewModel(weatherViewModel)
         self.tableView.reloadData()
+    }
+    // MARK: - SettingsTableViewControllerDelegate
+    func settingsDone(viewModel: SettingsViewModel) {
+        if lastUnitSelection.rawValue != viewModel.selectedUnit.rawValue {
+            weatherListViewModel.updateUnit(to: viewModel.selectedUnit)
+            tableView.reloadData()
+            lastUnitSelection = TemperatureUnit(rawValue: viewModel.selectedUnit.rawValue)
+        }
     }
     
     // MARK: - TableView Delegates
