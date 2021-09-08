@@ -23,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // ⭐️ 設定 NavigationBar BarButtomItem 的顏色
         UIBarButtonItem.appearance().tintColor = UIColor.white
         
+        setupDefaultsUnitSettings()
+        
         return true
     }
 
@@ -38,6 +40,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+    
+    // MARK: - Helpers
+    private func setupDefaultsUnitSettings() {
+        let userDefautlts = UserDefaults.standard
+        if userDefautlts.value(forKey: "unit") == nil {
+            userDefautlts.setValue(TemperatureUnit.fahrenheit.rawValue, forKey: "unit")
+        }
     }
 
 
