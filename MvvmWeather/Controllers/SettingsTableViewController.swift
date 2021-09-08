@@ -47,6 +47,7 @@ class SettingsTableViewController: UITableViewController {
                                                  for: indexPath)
         let settingsItem = settingsViewModel.units[indexPath.row]
         cell.textLabel?.text = settingsItem.displayName
+        cell.selectionStyle = .none
         
         /* 若 VM 中的溫度單位已被選取，將 cell 樣式換成打勾 */
         if settingsItem == settingsViewModel.selectedUnit {

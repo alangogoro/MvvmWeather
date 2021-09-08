@@ -28,15 +28,15 @@ extension TemperatureUnit {
 class SettingsViewModel {
     
     let units = TemperatureUnit.allCases
+    private var _selectedUnit: TemperatureUnit = .fahrenheit
     
     var selectedUnit: TemperatureUnit {
         // Enum(String) 的 Getter
         get {
-            var unitValue = ""
             if let value = UserDefaults.standard.value(forKey: "unit") as? String {
-                unitValue = value
+                return TemperatureUnit(rawValue: value)!
             }
-            return TemperatureUnit(rawValue: unitValue)!
+            return _selectedUnit
         }
         // Enum(String) 的 Setter
         set {

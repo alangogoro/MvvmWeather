@@ -58,12 +58,12 @@
                     <navigationItem key="navigationItem" title=" Good Weather" id="dFX-JN-Hdk">
                         <barButtonItem key="leftBarButtonItem" image="gearshape" catalog="system" id="3tJ-qP-NhM">
                             <connections>
-                                <segue destination="7Tz-dw-KZh" kind="presentation" id="W6w-6n-zib"/>
+                                <segue destination="7Tz-dw-KZh" kind="presentation" identifier="SettingsSegue" id="W6w-6n-zib"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="VcJ-G1-5hv">
                             <connections>
-                                <segue destination="9MF-pw-vs9" kind="presentation" identifier="AddWeatherSegue" id="G56-5W-lcb"/>
+                                <segue destination="9MF-pw-vs9" kind="presentation" identifier="AddCitySegue" id="G56-5W-lcb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
