@@ -10,32 +10,14 @@ import Foundation
 
 class WeatherViewModel {
     let weather: WeatherData
+    var temperature: Double
     
     init(_ weatherData: WeatherData) {
         self.weather = weatherData
+        self.temperature = weatherData.main.temp
     }
     
     var city: String {
         return weather.name
-    }
-    
-    var temperature: Double {
-        return weather.main.temp
-    }
-}
-
-class WeatherListViewModel {
-    private var weatherViewModels = [WeatherViewModel]()
-    
-    func addWeatherViewModel(_ viewModel: WeatherViewModel) {
-        weatherViewModels.append(viewModel)
-    }
-    
-    func numberOfRows(_ section: Int) -> Int {
-        return weatherViewModels.count
-    }
-    
-    func modelAt(_ index: Int) -> WeatherViewModel {
-        return weatherViewModels[index]
     }
 }

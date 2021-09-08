@@ -11,7 +11,6 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -22,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         // ⭐️ 設定 NavigationBar BarButtomItem 的顏色
         UIBarButtonItem.appearance().tintColor = UIColor.white
+        
+        setupDefaultsUnitSettings()
         
         return true
     }
@@ -39,6 +40,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
+    
+    // MARK: - Helpers
+    private func setupDefaultsUnitSettings() {
+        let userDefautlts = UserDefaults.standard
+        if userDefautlts.value(forKey: "unit") == nil {
+            userDefautlts.setValue(TemperatureUnit.fahrenheit.rawValue, forKey: "unit")
+        }
+    }
+    
+    
 }
