@@ -12,7 +12,7 @@ class WeahterListTableViewController: UITableViewController {
     
     // MARK: - Properties
     private var weatherListViewModel = WeatherListViewModel()
-    private var lastUnitSelection: TemperatureUnit!
+    //private var lastUnitSelection: TemperatureUnit!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -20,9 +20,9 @@ class WeahterListTableViewController: UITableViewController {
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        if let value = UserDefaults.standard.value(forKey: "unit") as? String {
-            lastUnitSelection = TemperatureUnit(rawValue: value)
-        }
+//        if let value = UserDefaults.standard.value(forKey: "unit") as? String {
+//            lastUnitSelection = TemperatureUnit(rawValue: value)
+//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
