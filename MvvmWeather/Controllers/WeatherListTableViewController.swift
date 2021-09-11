@@ -12,6 +12,7 @@ class WeahterListTableViewController: UITableViewController {
     
     // MARK: - Properties
     private var weatherListViewModel = WeatherListViewModel()
+    private var dataSource: TableViewDataSource<WeatherCell,WeatherViewModel>!
     //private var lastUnitSelection: TemperatureUnit!
     
     // MARK: - Lifecycle
@@ -19,6 +20,16 @@ class WeahterListTableViewController: UITableViewController {
         super.viewDidLoad()
         
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        dataSource = TableViewDataSource(cellIdentifier: "WeatherCell",
+                                         items: weatherListViewModel.weatherViewModels,
+                                         configureCell: { cell, vm in
+                                            cell.cityNameLabel.text = vm.city
+                                            cell.temperatureLabel.text = vm.temperature.formatAsDegree()
+                                         })
+        /* ⭐️ 設定 TableView 的 dataSource 為自定義的
+         * 就不用在本頁去寫 TableView dataSource 的 code */
+        tableView.dataSource = dataSource
         
 //        if let value = UserDefaults.standard.value(forKey: "unit") as? String {
 //            lastUnitSelection = TemperatureUnit(rawValue: value)
@@ -69,22 +80,6 @@ class WeahterListTableViewController: UITableViewController {
         return 100
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return weatherListViewModel.numberOfRows(section)
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell",
-                                                 for: indexPath) as! WeatherCell
-        let weatherViewModel = weatherListViewModel.modelAt(indexPath.row)
-        cell.configure(weatherViewModel)
-        return cell
-    }
-    
     
 }
 
@@ -92,7 +87,13 @@ class WeahterListTableViewController: UITableViewController {
 extension WeahterListTableViewController: AddCityViewControllerDelegate {
     func didSave(weatherViewModel: WeatherViewModel) {
         debugPrint(weatherViewModel.city)
+        
         weatherListViewModel.addWeatherViewModel(weatherViewModel)
+        /* ⛔️ Call by Value ←→ Call by Reference 差異
+         * dataSource 擁有的是 copy value 的 viewModels
+         * 因此即使更新本頁的 viewModels，dataSource 仍不會改變，tableView 也不會更新
+         * 需要重新對 dataSource 的 items 賦值，才能達成更新 tableView 目的 */
+        dataSource.updateItems(weatherListViewModel.weatherViewModels)
         self.tableView.reloadData()
     }
 }

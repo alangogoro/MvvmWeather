@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class WeatherViewModel {
     let weather: WeatherData
     var temperature: Double
