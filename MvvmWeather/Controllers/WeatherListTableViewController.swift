@@ -31,9 +31,6 @@ class WeahterListTableViewController: UITableViewController {
          * 就不用在本頁去寫 TableView dataSource 的 code */
         tableView.dataSource = dataSource
         
-//        if let value = UserDefaults.standard.value(forKey: "unit") as? String {
-//            lastUnitSelection = TemperatureUnit(rawValue: value)
-//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

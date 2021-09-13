@@ -28,7 +28,7 @@ extension TemperatureUnit {
 class SettingsViewModel {
     
     let units = TemperatureUnit.allCases
-    private var _selectedUnit: TemperatureUnit = .fahrenheit
+    private var _selectedUnit: TemperatureUnit = .celsius
     
     var selectedUnit: TemperatureUnit {
         // Enum(String) 的 Getter
