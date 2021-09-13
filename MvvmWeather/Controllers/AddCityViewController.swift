@@ -38,7 +38,5 @@ class AddCityViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    // MARK: - Helpers
     
-     
 }

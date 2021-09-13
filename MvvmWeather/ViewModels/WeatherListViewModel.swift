@@ -7,11 +7,13 @@
 
 import Foundation
 
-struct WeatherListViewModel {
+class WeatherListViewModel {
     
-    private var weatherViewModels = [WeatherViewModel]()
+    /* ⭐️ private(set) 外部可以 get 到此 property 來使用
+     * 但不可從外部 set property */
+    private(set) var weatherViewModels = [WeatherViewModel]()
     
-    mutating func addWeatherViewModel(_ viewModel: WeatherViewModel) {
+    func addWeatherViewModel(_ viewModel: WeatherViewModel) {
         weatherViewModels.append(viewModel)
     }
     
@@ -23,7 +25,7 @@ struct WeatherListViewModel {
         return weatherViewModels[index]
     }
     
-    mutating func updateUnit(to unit: TemperatureUnit) {
+    func updateUnit(to unit: TemperatureUnit) {
         switch unit {
         case .celsius:
             toCelsius()
@@ -32,7 +34,7 @@ struct WeatherListViewModel {
         }
     }
     
-    private mutating func toCelsius() {
+    private func toCelsius() {
         weatherViewModels = weatherViewModels.map { vm in
             let weatherModel = vm
             weatherModel.temperature = (weatherModel.temperature - 32) * 5/9
@@ -40,7 +42,7 @@ struct WeatherListViewModel {
         }
     }
     
-    private mutating func toFahrenheit() {
+    private func toFahrenheit() {
         weatherViewModels = weatherViewModels.map { vm in
             let weatherModel = vm
             weatherModel.temperature = (weatherModel.temperature * 9/5) + 32
